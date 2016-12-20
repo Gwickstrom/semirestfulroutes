@@ -1,0 +1,21 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+     <link rel="stylesheet" href="{% static 'semirestful/css/styles.css' %}">
+    <title>Add a new pet</title>
+</head>
+<body>
+    <h1>Add a new pet</h1>
+    <form action="/pets/" method="POST">
+        {% csrf_token %}
+        <p> Pet Name: <input type="text" name="name"></p>
+        <p>Description: <input type="text" name="description"></p>
+        <p>Type of Pet: <input type="text" name="type_of_pet"></p>
+        <p>Breed: <input type="text" name="breed"></p>
+        <p><input type="submit" value="create pet"></p>
+    </form>
+    <a href="/pets">Go back</a>
+</body>
+</html>

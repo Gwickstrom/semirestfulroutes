@@ -1,0 +1,22 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+     <link rel="stylesheet" href="{% static 'semirestful/css/styles.css' %}">
+    <title>Edit Pet</title>
+</head>
+<body>
+    <h2>Edit Pet {{pet.id}}</h2>
+    <form action="/pets/{{pet.id}}/" method="POST">
+        {% csrf_token %}
+        <p> Pet Name: <input type="text" name="name" value="{{pet.name}}"></p>
+        <p>Description: <input type="text" name="description" value="{{pet.description}}"> </p>
+        <p>Type of Pet: <input type="text" name="type_of_pet" value="{{pet.type_of_pet}}"></p>
+        <p>Breed: <input type="text" name="breed" value="{{pet.breed}}"></p>
+        <p><input type="submit" value="update"></p>
+    </form>
+    <a href="/pets/{{pet.id}}/">Show</a>
+    <a href="/pets/">Back</a>
+</body>
+</html>

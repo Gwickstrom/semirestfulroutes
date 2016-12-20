@@ -1,0 +1,22 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+     <link rel="stylesheet" href="{% static 'semirestful/css/styles.css' %}">
+    <title>Show</title>
+</head>
+<body>
+    <!-- Nothing in these values -->
+    <h1>Pet {{pet.id}}</h1>
+    <p>Name: {{pet.name}}</p>
+    <p>Description: {{pet.description}}</p>
+    <p>Type: {{pet.type_of_pet}}</p>
+    <p>Breed: {{pet.breed}}</p>
+    <br>
+    <a href="/pets/{{pet.id}}/edit/"> Edit</a>
+    <br>
+    <br>
+    <a href="/pets/"> Go back to Pets</a>
+</body>
+</html>

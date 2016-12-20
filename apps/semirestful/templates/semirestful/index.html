@@ -1,0 +1,50 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+     <link rel="stylesheet" href="{% static 'semirestful/css/styles.css' %}">
+    </style>
+    <title>Pets</title>
+</head>
+<body>
+    <h1>Pets index</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Pet Name</th>
+                <th>Pet Description</th>
+                <th>Pet Type</th>
+                <th>Pet Breed</th>
+                <th>Date Added</th>
+                <th>Number of Pets</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for pet in pets %}
+                <tr>
+                    {# <td>{{pet.id}}</td>#}
+                    <td>{{pet.name}}</td>
+                    {# <td><a href="/pets/{{pet.id}}/">{{pet.name}}</a></td>#}
+                    <td>{{pet.description}}</td>
+                    <td>{{pet.type_of_pet}}</td>
+                    <td>{{pet.breed}}</td>
+                    <td>{{pet.created_at}}</td>
+                    <td>{{pet.count}}</td>
+                    <td>
+                        <a href="/pets/{{pet.id}}/">Show</a>
+                        <a href="/pets/{{pet.id}}/edit/">Edit</a>
+                        <form action="/pets/{{pet.id}}/destroy/" method="POST" class='delete'>
+                            {% csrf_token %}
+                            {# <input type="hidden" name="id" value="{{pet.id}}">#}
+                            <input type="submit" value="Delete"></form>
+                    </td>
+                    {# <td><form action="{% url 'update' %}" method="POST">{% csrf_token %}<input type="text" name="pet_name" value="{{pet.name}}"><input type="submit" value="Update"></form></td>#}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <p><a href="/pets/new"> Create a pet</a></p>
+</body>
+</html>
